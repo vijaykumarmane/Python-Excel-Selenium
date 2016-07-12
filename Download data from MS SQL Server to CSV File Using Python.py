@@ -12,3 +12,4 @@ with open(r'File_Path\NewTest.csv', "a") as csv_file:
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow([i[0] for i in curs.description])  # write headers
     csv_writer.writerows(curs)
+

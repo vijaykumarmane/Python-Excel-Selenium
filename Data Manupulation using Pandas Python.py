@@ -12,6 +12,9 @@ with pd.ExcelFile(path) as xls:
 # Strip headers of all columns
 df = df.rename(columns=lambda x: x.strip())
 
+# Code to remove spaces in header with underscore. You can use like
+# df2.columns = [x.strip().replace(' ', '_') for x in df2.columns]
+
 # Cleaning for PT Count. "DN / PT#" is a column name in dataset.
 df['DN / PT#'] = df['DN / PT#'].replace(', ',',')
 df['DN / PT#'] = df['DN / PT#'].replace('No D/N on docs','')

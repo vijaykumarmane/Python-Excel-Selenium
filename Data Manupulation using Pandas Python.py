@@ -1,4 +1,4 @@
-""" Data manupulation like excel and Importing Exporting data using Pandas.
+""" Data Manupulation using Pandas. Data manupulation like excel and Importing Exporting data using Pandas.
 And function like IF and VLookup*, adding new column and filling using lambda function like formulaes in excel and
 deleting and updating data, creating new dataframes like new sheet."""
 

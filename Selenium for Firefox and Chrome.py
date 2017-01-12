@@ -11,4 +11,6 @@ driver = webdriver.Chrome(r'C:\Users\vijaykumar.mane\Desktop\chromedriver.exe')
 
 driver.get("http://www.python.org")
 
-driver.close()  # Issue to close Chrome browser.
+driver.close() # Works for Chrome
+
+driver.quit() # Works for Firefox

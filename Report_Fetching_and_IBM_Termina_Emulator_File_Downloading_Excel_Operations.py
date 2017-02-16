@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 import time
 import datetime
 import re
-# Download ibm_iseries_module from main repository
+# Download ibm_iseries_module from main repository and rename as ibm.py or if you know how packages work then no need :)
 from ibm import iseries
 import os
 import xlwings as xw

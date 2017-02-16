@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 import time
 import datetime
 import re
+# Download ibm_iseries_module from main repository
 from ibm import iseries
 import os
 import xlwings as xw

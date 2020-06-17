@@ -3,6 +3,7 @@ from selenium import webdriver
 import re
 import time
 from fuzzywuzzy import fuzz
+import os
 
 # Open saved workbook
 wb = xw.Book(os.path.expanduser("~")+"\\Desktop\\Contact Details.xlsx")
@@ -21,14 +22,16 @@ def ecosiaEmail(companyName):
 		link = driver.find_element_by_partial_link_text("https://www.zaubacorp.com/company/")
 		time.sleep(1)
 		comp = re.search('https://www.zaubacorp.com/company/(.+)/', link.text).group(1).replace("-"," ")
-		Ratio = fuzz.ratio(i.lower().replace("& ","").replace("pvt.","private").replace('ltd.','limited'),comp.lower())
+		Ratio = fuzz.ratio(companyName.lower().replace("& ","").replace("pvt.","private").replace('ltd.','limited'),comp.lower())
 		if Ratio > 85:
 			link.click()
 			time.sleep(3)
 			ele = driver.find_element_by_xpath('/html/body')
 			email = re.search('Email ID: ([\S+@\S+]+)', ele.text)
 			email = email.group(1)
-			return email, ratio
+			return email, Ratio
+		else:
+			return "", ""
 	except:
 		return "", ""
 
@@ -51,6 +54,8 @@ def googleEmail(companyName):
 			email = re.search('Email ID: ([\S+@\S+]+)', ele.text)
 			email = email.group(1)
 			return email, Ratio
+		else:
+			return "", ""
 	except:
 		return "", ""
 
@@ -61,13 +66,15 @@ while sht.range("B" + str(i)).value != None:
 	if companyName != prevName:
 		output = ecosiaEmail(companyName)
 		sht.range("C" + str(i)).value = output
-		if not "@" in output[0]:
+		if not "@" in str(output[0]):
 			output = googleEmail(companyName)
 			sht.range("C" + str(i)).value = output
 	else:
 		sht.range("C"+str(i)+":"+"D"+str(i)).value = sht.range("C"+str(i-1)+":"+"D"+str(i-1)).value
 	i+=1
+
 wb.save()
 driver.close()
 
 print('Done')
+

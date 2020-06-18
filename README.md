@@ -3,7 +3,7 @@ To convert Python Script to EXE Build use Pyinstaller or get it ZIP and unzip in
 
 <b>To Exclude Heavy Packages to Reduce size of EXE: Use cd to change directory</b>
  
-C:\Users\Admin\AppData\Local\Programs\Python\Python37-32>pyinstaller --onefile --exclude matplotlib --exclude scipy --exclude pandas --exclude numpy.py --name=EmailAutoV3 XlwingsPlaying.py
+C:\Users\Admin\AppData\Local\Programs\Python\Python37-32>pyinstaller --onefile <b>--exclude matplotlib --exclude scipy --exclude pandas --exclude numpy.py</b> --name=EmailAutoV3 XlwingsPlaying.py
 
 Adds Unnecesary Packages:
 
